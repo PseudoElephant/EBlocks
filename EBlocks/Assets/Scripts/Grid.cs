@@ -9,11 +9,9 @@ public class Grid : MonoBehaviour
 
     public int widthBoard;
     public int heightBoard;
-
  
     public GameObject linePrefabUp;
     public GameObject linePrefabHor;
-
 
     public GameObject blockPrefab;
 
