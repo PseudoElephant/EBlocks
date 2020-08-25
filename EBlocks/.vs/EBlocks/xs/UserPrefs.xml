@@ -1,12 +1,21 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Grid.cs">
+﻿<Properties StartupConfiguration="{68EFAA05-9DCC-1242-A610-333768FB5A63}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BlockBase.cs">
     <Files>
-      <File FileName="Assets/Scripts/Grid.cs" Line="21" Column="5" />
+      <File FileName="Assets/Scripts/Grid.cs" Line="22" Column="1" />
+      <File FileName="Assets/Scripts/Container.cs" Line="8" Column="69" />
+      <File FileName="Assets/Scripts/BlockBase.cs" Line="25" Column="35" />
+      <File FileName="Assets/Scripts/Player.cs" Line="26" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="EBlocks" expanded="True" selected="True" />
+          <Node name="EBlocks" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="BlockBase.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
