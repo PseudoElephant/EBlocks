@@ -25,6 +25,7 @@ public class Container : MonoBehaviour
     /// </summary>
     public int j { get; set; }
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class Container : MonoBehaviour
     /// <returns><see cref="bool"/></returns>
     public bool IsEmpty()
     {
-        throw new System.NotImplementedException();
+        return blockHeld == null;   
     }
     
     /// <summary>
@@ -52,24 +53,56 @@ public class Container : MonoBehaviour
     /// <param name="container">The contaienr to which the item is being transfered</param>
     public bool TransferItemHeld(Grid.Direction direction)
     {
+<<<<<<< HEAD
         throw new System.NotImplementedException();
     }
+=======
+        // TODO: Chain Items
+        Container container = GetNeighbor(direction);
+
+        if (container?.IsEmpty() ?? true)
+        {
+            container.AddBlockHeld(blockHeld);
+            return true;
+        }
+        return false;
+    }
+    
+>>>>>>> 6c0b030ce652f0cb8872038171d8a8142a25e727
 
     /// <summary>
     /// Removes the item being held at the moment
     /// </summary>
     /// <returns><see cref="BaseBlock"/></returns>
-    public BaseBlock RemoveItemHeld()
+    public BaseBlock RemoveBlockHeld()
     {
-        throw new System.NotImplementedException();
+        BaseBlock block = blockHeld;
+        blockHeld = null;
+        return blockHeld;
+        
     }
 
     /// <summary>
     /// Adds an item for the conteiner to hold
     /// </summary>
-    public void AddItemHeld()
+    /// <param name="block">Block that will be added</param>
+    public void AddBlockHeld(BaseBlock block)
     {
-        throw new System.NotImplementedException();
+       if (IsEmpty())
+        {
+            blockHeld = block;
+        }
+    }    
+    
+    /// <summary>
+    /// Replaces an item for the conteiner to hold
+    /// </summary>
+    /// <param name="block">Block that will be added</param>
+    public void ReplaceBlockHeld(BaseBlock block)
+    {
+        // TODO: Should Destroy?
+        RemoveBlockHeld();
+        blockHeld = block;
     }
 
     /// <summary>
@@ -79,7 +112,8 @@ public class Container : MonoBehaviour
     /// <returns><see cref="Container"/></returns>
     public Container GetNeighbor(Grid.Direction direction)
     {
-        throw new System.NotImplementedException();
+       return grid.GetNeighbors(i, j)[(int)direction];
+        
     }
 
     /// <summary>
@@ -88,6 +122,6 @@ public class Container : MonoBehaviour
     /// <returns>All of the neighbors <see cref="Container"/></returns>
     public Container[] GetNeighbors()
     {
-        throw new System.NotImplementedException();
+        return grid.GetNeighbors(i, j);   
     }
 }
