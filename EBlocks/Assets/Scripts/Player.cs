@@ -8,59 +8,60 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
 
-/// <summary>
-/// Represents the player inventory, contains all data of placeable blocks and quantities.
-/// Check <see cref="Inventory"/>.
-/// </summary>
+    /// <summary>
+    /// Represents the player inventory, contains all data of placeable blocks and quantities.
+    /// Check <see cref="Inventory"/>.
+    /// </summary>
     Inventory inventory;
 
-/// <summary>
-/// Coooldown duration for Hop Move, and step duration for Normal Move
-/// </summary>
-public  float stepDuration = 0.25f;
+    /// <summary>
+    /// Coooldown duration for Hop Move, and step duration for Normal Move
+    /// </summary>
+    public  float stepDuration = 0.25f;
 
-/// <summary>
-/// Wether the player is using hops or smooth movement
-/// </summary>
-public bool hopMove = false;
+    /// <summary>
+    /// Wether the player is using hops or smooth movement
+    /// </summary>
+    public bool hopMove = false;
 
-/// <summary>
-/// Represent the coroutine that will be called on player movement
-/// </summary>
-private Coroutine playerMovement;
+    /// <summary>
+    /// Represent the coroutine that will be called on player movement
+    /// </summary>
+    private Coroutine playerMovement;
 
-/// <summary>
-/// Blue print for a Move function
-/// </summary>
-/// <param name="direction">Direction in which the player is moving</param>
-/// <returns></returns>
-private delegate IEnumerator Move(Vector3 direction);
+    /// <summary>
+    /// Blue print for a Move function
+    /// </summary>
+    /// <param name="direction">Direction in which the player is moving</param>
+    /// <returns></returns>
+    private delegate IEnumerator Move(Vector3 direction);
 
     /// <summary>
     /// Contains the move method coroutine
     /// </summary>
- Move moveMethod;
-private void Start() {
-    if (hopMove)
-        moveMethod = HopMove;
-    else
-        moveMethod = MovePlayer;
-}
-private void Update()
-{
-    if (playerMovement == null)
-    {
-        if (Input.GetKey(KeyCode.W))        //In general not a good idea to use Input.GetKey; use Input.GetButton instead
-            playerMovement = StartCoroutine(moveMethod(Vector3.up));
-        else if (Input.GetKey(KeyCode.S))
-            playerMovement = StartCoroutine(moveMethod(Vector3.down));
-        else if (Input.GetKey(KeyCode.D))
-            playerMovement = StartCoroutine(moveMethod(Vector3.right));
-        else if (Input.GetKey(KeyCode.A))
-            playerMovement = StartCoroutine(moveMethod(Vector3.left));
-    }
-}
+    Move moveMethod;
 
+    private void Start() {
+        if (hopMove)
+            moveMethod = HopMove;
+        else
+            moveMethod = MovePlayer;
+    }
+
+    private void Update()
+    {
+        if (playerMovement == null)
+        {
+            if (Input.GetKey(KeyCode.W))        //In general not a good idea to use Input.GetKey; use Input.GetButton instead
+                playerMovement = StartCoroutine(moveMethod(Vector3.up));
+            else if (Input.GetKey(KeyCode.S))
+                playerMovement = StartCoroutine(moveMethod(Vector3.down));
+            else if (Input.GetKey(KeyCode.D))
+                playerMovement = StartCoroutine(moveMethod(Vector3.right));
+            else if (Input.GetKey(KeyCode.A))
+                playerMovement = StartCoroutine(moveMethod(Vector3.left));
+        }
+    }
 
     /// <summary>
     /// Moves the player and interpolates between his position and the next
@@ -122,12 +123,12 @@ private void Update()
         throw new System.NotImplementedException();
     }
 
-/// <summary>
-/// Returns boolean indicating if a block can be placed in position x,y
-/// </summary>
-/// <param name="x">Coordinate X</param>
-/// <param name="y">Coordinate Y</param>
-/// <returns><see cref="bool"/></returns>
+    /// <summary>
+    /// Returns boolean indicating if a block can be placed in position x,y
+    /// </summary>
+    /// <param name="x">Coordinate X</param>
+    /// <param name="y">Coordinate Y</param>
+    /// <returns><see cref="bool"/></returns>
     public bool CanPlaceBlockAt(float x, float y)
     {
         throw new System.NotImplementedException();

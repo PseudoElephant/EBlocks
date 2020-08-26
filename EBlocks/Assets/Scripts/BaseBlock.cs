@@ -5,25 +5,24 @@ using UnityEngine;
 public class BaseBlock : MonoBehaviour
 {
 
-/// <summary>
-///     Describes whether the block is pushable or not
-/// </summary>
+    /// <summary>
+    /// Describes whether the block is pushable or not
+    /// </summary>
     public bool isPushable { get; }
 
-/// <summary>
-/// Describes whether the block can be picked up or not
-/// </summary>
-/// 
+    /// <summary>
+    /// Describes whether the block can be picked up or not
+    /// </summary>
     public bool isPickable { get; }
     
-/// <summary>
- /// Describes wether it is possible to go through the object
-/// </summary>
+    /// <summary>
+    /// Describes wether it is possible to go through the object
+    /// </summary>
     public bool actAsWall { get; }
 
-/// <summary>
-/// Item that corresponds to the block.
-/// </summary>
+    /// <summary>
+    /// Item that corresponds to the block.
+    /// </summary>
     public GameObject itemPrefab { get;  }
 
     // Start is called before the first frame update

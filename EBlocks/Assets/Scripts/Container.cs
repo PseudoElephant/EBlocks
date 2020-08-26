@@ -74,10 +74,10 @@ public class Container : MonoBehaviour
         throw new System.NotImplementedException();
     }
 
-/// <summary>
-/// Gets all of the available neighbor containers.
-/// </summary>
-/// <returns>All of the neighbors <see cref="Container"/></returns>
+    /// <summary>
+    /// Gets all of the available neighbor containers.
+    /// </summary>
+    /// <returns>All of the neighbors <see cref="Container"/></returns>
     public Container[] GetNeighbors()
     {
         throw new System.NotImplementedException();
