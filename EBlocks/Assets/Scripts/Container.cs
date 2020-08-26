@@ -8,7 +8,7 @@ public class Container : MonoBehaviour
     /// <summary>
     /// Item that is being held by the container, could be <c>null</c>
     /// </summary>
-    public BaseBlock blockHeld { get; set;  }
+    public BaseBlock blockHeld { get; set; }
 
     /// <summary>
     /// The <see cref="Grid"/> that is currently being used in the level.
@@ -63,6 +63,13 @@ public class Container : MonoBehaviour
         throw new System.NotImplementedException();
     }
 
+    /// <summary>
+    /// Adds an item for the conteiner to hold
+    /// </summary>
+    public void AddItemHeld()
+    {
+        throw new System.NotImplementedException();
+    }
 
     /// <summary>
     /// Gets the neighbor Containers 

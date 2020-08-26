@@ -6,7 +6,9 @@
           <Node name="EBlocks" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="LevelManager.cs" selected="True" />
+                <Node name="DataSaving" expanded="True" />
+                <Node name="Inventory" expanded="True" />
+                <Node name="Container.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -16,7 +18,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="a56cb8db-b234-4ef8-885c-b740fd2b9fa9" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="94c052ed-461a-4177-9024-99542518c44c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
