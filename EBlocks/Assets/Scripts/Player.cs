@@ -33,33 +33,32 @@ private void Update()
             playerMovement = StartCoroutine(moveMethod(Vector3.left));
     }
 }
-    private IEnumerator MovePlayer(Vector3 direction)
-{
-    Vector2 startPosition = transform.position;
-    Vector2 destinationPosition = transform.position + direction;
-    float t = 0.0f;
 
-    while (t < 1.0f)
+    private IEnumerator MovePlayer(Vector3 direction)
     {
-        transform.position = Vector2.Lerp(startPosition, destinationPosition, t);
-        t += Time.deltaTime / stepDuration;
-        yield return new WaitForEndOfFrame();
+        Vector2 startPosition = transform.position;
+        Vector2 destinationPosition = transform.position + direction;
+        float t = 0.0f;
+
+        while (t < 1.0f)
+        {
+            transform.position = Vector2.Lerp(startPosition, destinationPosition, t);
+            t += Time.deltaTime / stepDuration;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = destinationPosition;
+
+        playerMovement = null;
     }
 
-    transform.position = destinationPosition;
-
-    playerMovement = null;
-}
-
     private IEnumerator HopMove(Vector3 direction)
-{
+    {
  
-        transform.position += direction; 
+            transform.position += direction; 
         
-        yield return new WaitForSeconds(stepDuration);
+            yield return new WaitForSeconds(stepDuration);
     
-    playerMovement = null;
-}
-
- 
+        playerMovement = null;
+    }
 }
