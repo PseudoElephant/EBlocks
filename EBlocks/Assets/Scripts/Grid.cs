@@ -42,7 +42,7 @@ public class Grid : MonoBehaviour
     /// </summary>
     private int gridHeight { get; set; }
 
-    public float gridScale;
+    public static float gridScale;
 
     /// <summary>
     /// Enum that determines the direction.

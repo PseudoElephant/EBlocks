@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseBlock : MonoBehaviour
 {
+    //TODO: Add smoother movement on move
 
     /// <summary>
     /// Describes whether the block is pushable or not
@@ -23,7 +24,12 @@ public class BaseBlock : MonoBehaviour
     /// <summary>
     /// Item that corresponds to the block.
     /// </summary>
-    public GameObject itemPrefab { get;  }
+    public GameObject itemPrefab { get; }
+
+    /// <summary>
+    /// Container in which the block is held
+    /// </summary>
+    public Container currentContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -43,15 +49,37 @@ public class BaseBlock : MonoBehaviour
     /// <returns><see cref="Container"/></returns>
     private Container GetContainer()
     {
-        throw new System.NotImplementedException();
+        return currentContainer;
     }
 
     /// <summary>
     /// Tries to move the block in the specified direction <see cref="Grid.Direction"/>
     /// <param name="direction">The Direction where the block should try and move</param>
     /// </summary>
-    public void Move(Grid.Direction direction){
-        throw new System.NotImplementedException();
+    public void Move(Grid.Direction direction)
+    {
+        if(currentContainer.TransferItemHeld(direction))
+        {
+            Vector3 pos = transform.position;
+            switch (direction)
+            {
+                case Grid.Direction.UP:
+                    transform.position = new Vector3(pos.x, pos.y+Grid.gridScale, pos.z);
+                    break;
+
+                case Grid.Direction.RIGHT:
+                    transform.position = new Vector3(pos.x + Grid.gridScale, pos.y, pos.z);
+                    break;
+
+                case Grid.Direction.DOWN:
+                    transform.position = new Vector3(pos.x, pos.y - Grid.gridScale, pos.z);
+                    break;
+
+                case Grid.Direction.LEFT:
+                    transform.position = new Vector3(pos.x - Grid.gridScale, pos.y, pos.z);
+                    break;
+            }
+        }
     }
 
     /// <summary>

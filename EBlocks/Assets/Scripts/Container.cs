@@ -50,10 +50,11 @@ public class Container : MonoBehaviour
     /// Transfers the current item to another <see cref="Container"/> if possible.
     /// </summary>
     /// <param name="container">The contaienr to which the item is being transfered</param>
-    public void TransferItemHeld(Container container)
+    public bool TransferItemHeld(Grid.Direction direction)
     {
-
+        throw new System.NotImplementedException();
     }
+
     /// <summary>
     /// Removes the item being held at the moment
     /// </summary>
@@ -89,6 +90,4 @@ public class Container : MonoBehaviour
     {
         throw new System.NotImplementedException();
     }
-
-
 }
