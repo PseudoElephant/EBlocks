@@ -57,18 +57,49 @@ public class Player : MonoBehaviour
             {
                 if(neighboringContainer.blockHeld.isPushable) //Check if its pushable
                 {
-                    //TODO: Maybe recursive?
-                    do
-                    {
-                        neighboringContainer = neighboringContainer.GetNeighbor(direction);
-                    } while (!(neighboringContainer?.IsEmpty()??true));
-
-                    if (neighboringContainer != null)
+                    if(RecursiveCheck(neighboringContainer, direction))
                     {
                         MovePlayer(direction);
                     }
                 } 
             }
+        }
+    }
+
+    /// <summary>
+    /// Recursivly searches for the next neighbor to see if the player can move. Also pushes objects if possible.
+    /// </summary>
+    /// <param name="container">Current container</param>
+    /// <param name="direction">Direction in which to check</param>
+    /// <returns></returns>
+    private bool RecursiveCheck(Container container, Grid.Direction direction)
+    {
+        bool canMove = false;
+
+        //Base Cases
+        if (container == null)
+        {
+            return false;
+        }
+        else if (container.IsEmpty())
+        {
+            return true;
+        }
+        else if (container.blockHeld.actsAsWall)
+        {
+            return false;
+        }
+
+        //Rest of code
+        canMove = RecursiveCheck(container.GetNeighbor(direction), direction);
+        
+        if(canMove)
+        {
+            container.blockHeld.Move(direction);
+            return canMove;
+        } else
+        {
+            return false;
         }
     }
 

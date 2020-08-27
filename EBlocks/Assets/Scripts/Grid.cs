@@ -58,8 +58,8 @@ public class Grid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gridHeight = 3;
-        gridWidth = 3;
+        gridHeight = 5;
+        gridWidth = 5;
         InitializeVisualGuidesToGrid();
         InitializeContainersToGrid();
         
@@ -68,17 +68,17 @@ public class Grid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(Input.GetMouseButtonDown(0))
-        {
-            Container[] conts = GetNeighbors(pos.x, pos.y);
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    Container[] conts = GetNeighbors(pos.x, pos.y);
 
-            foreach(Container cont in conts)
-            {
-                Debug.Log(cont);
-            }
-        }
+        //    foreach(Container cont in conts)
+        //    {
+        //        Debug.Log(cont);
+        //    }
+        //}
     }
 
     private void InitializePlayer(int i, int j)

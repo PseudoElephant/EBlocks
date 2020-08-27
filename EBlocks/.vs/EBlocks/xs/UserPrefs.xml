@@ -1,12 +1,5 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
-    <Files>
-      <File FileName="Assets/Scripts/Container.cs" Line="11" Column="32" />
-      <File FileName="Assets/Scripts/BaseBlock.cs" />
-      <File FileName="Assets/Scripts/Grid.cs" />
-      <File FileName="Assets/Scripts/Player.cs" Line="63" Column="1" />
-      <File FileName="Assets/Scripts/BaseItem.cs" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -14,7 +7,7 @@
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Player.cs" selected="True" />
+                  <Node name="Container.cs" selected="True" />
                 </Node>
               </Node>
             </Node>

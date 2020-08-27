@@ -58,28 +58,29 @@ public class BaseBlock : MonoBehaviour
     /// </summary>
     public void Move(Grid.Direction direction)
     {
-        if(currentContainer.TransferItemHeld(direction))
-        {
-            Vector3 pos = transform.position;
-            switch (direction)
-            {
-                case Grid.Direction.UP:
-                    transform.position = new Vector3(pos.x, pos.y+Grid.gridScale, pos.z);
-                    break;
+        //if(currentContainer.TransferItemHeld(direction))
+        //{
+        //    Vector3 pos = transform.position;
+        //    switch (direction)
+        //    {
+        //        case Grid.Direction.UP:
+        //            transform.position = new Vector3(pos.x, pos.y+Grid.gridScale, pos.z);
+        //            break;
 
-                case Grid.Direction.RIGHT:
-                    transform.position = new Vector3(pos.x + Grid.gridScale, pos.y, pos.z);
-                    break;
+        //        case Grid.Direction.RIGHT:
+        //            transform.position = new Vector3(pos.x + Grid.gridScale, pos.y, pos.z);
+        //            break;
 
-                case Grid.Direction.DOWN:
-                    transform.position = new Vector3(pos.x, pos.y - Grid.gridScale, pos.z);
-                    break;
+        //        case Grid.Direction.DOWN:
+        //            transform.position = new Vector3(pos.x, pos.y - Grid.gridScale, pos.z);
+        //            break;
 
-                case Grid.Direction.LEFT:
-                    transform.position = new Vector3(pos.x - Grid.gridScale, pos.y, pos.z);
-                    break;
-            }
-        }
+        //        case Grid.Direction.LEFT:
+        //            transform.position = new Vector3(pos.x - Grid.gridScale, pos.y, pos.z);
+        //            break;
+        //    }
+        //}
+        Debug.Log("Push!");
     }
 
     /// <summary>
@@ -113,11 +114,5 @@ public class BaseBlock : MonoBehaviour
     public void DestroySelf()
     {
         throw new System.NotImplementedException();
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Hello");
     }
 }
