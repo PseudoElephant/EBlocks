@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Container : MonoBehaviour
 {
-    
+
     /// <summary>
     /// Item that is being held by the container, could be <c>null</c>
     /// </summary>
-    public BaseBlock blockHeld { get; set; }
+    public BaseBlock blockHeld;
 
     /// <summary>
     /// The <see cref="Grid"/> that is currently being used in the level.
@@ -53,10 +53,6 @@ public class Container : MonoBehaviour
     /// <param name="container">The contaienr to which the item is being transfered</param>
     public bool TransferItemHeld(Grid.Direction direction)
     {
-<<<<<<< HEAD
-        throw new System.NotImplementedException();
-    }
-=======
         // TODO: Chain Items
         Container container = GetNeighbor(direction);
 
@@ -67,8 +63,6 @@ public class Container : MonoBehaviour
         }
         return false;
     }
-    
->>>>>>> 6c0b030ce652f0cb8872038171d8a8142a25e727
 
     /// <summary>
     /// Removes the item being held at the moment
@@ -100,7 +94,6 @@ public class Container : MonoBehaviour
     /// <param name="block">Block that will be added</param>
     public void ReplaceBlockHeld(BaseBlock block)
     {
-        // TODO: Should Destroy?
         RemoveBlockHeld();
         blockHeld = block;
     }
@@ -113,7 +106,6 @@ public class Container : MonoBehaviour
     public Container GetNeighbor(Grid.Direction direction)
     {
        return grid.GetNeighbors(i, j)[(int)direction];
-        
     }
 
     /// <summary>

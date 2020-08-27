@@ -42,7 +42,7 @@ public class Grid : MonoBehaviour
     /// </summary>
     private int gridHeight { get; set; }
 
-    public static float gridScale;
+    public static float gridScale = 1;
 
     /// <summary>
     /// Enum that determines the direction.
@@ -79,6 +79,16 @@ public class Grid : MonoBehaviour
                 Debug.Log(cont);
             }
         }
+    }
+
+    private void InitializePlayer(int i, int j)
+    {
+        Mathf.Clamp(i, 0, gridWidth - 1);
+        Mathf.Clamp(j, 0, gridHeight - 1);
+
+        GameObject thePlayer = Instantiate(player, new Vector3(i * gridScale + 0.5f * gridScale, j * gridScale + 0.5f * gridScale, 1), Quaternion.identity);
+        thePlayer.transform.localScale = new Vector3(gridScale, gridScale, 1); //Scale image to fit grid size
+        thePlayer.GetComponent<Player>().grid = this; //Passing grid reference
     }
 
     /// <summary>

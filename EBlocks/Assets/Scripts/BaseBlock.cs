@@ -9,22 +9,22 @@ public class BaseBlock : MonoBehaviour
     /// <summary>
     /// Describes whether the block is pushable or not
     /// </summary>
-    public bool isPushable { get; }
+    public bool isPushable;
 
     /// <summary>
     /// Describes whether the block can be picked up or not
     /// </summary>
-    public bool isPickable { get; }
-    
+    public bool isPickable;
+
     /// <summary>
     /// Describes wether it is possible to go through the object
     /// </summary>
-    public bool actAsWall { get; }
+    public bool actsAsWall;
 
     /// <summary>
     /// Item that corresponds to the block.
     /// </summary>
-    public GameObject itemPrefab { get; }
+    public GameObject itemPrefab; 
 
     /// <summary>
     /// Container in which the block is held
@@ -113,5 +113,11 @@ public class BaseBlock : MonoBehaviour
     public void DestroySelf()
     {
         throw new System.NotImplementedException();
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hello");
     }
 }

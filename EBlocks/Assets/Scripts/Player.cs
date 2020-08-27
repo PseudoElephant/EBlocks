@@ -41,25 +41,82 @@ public class Player : MonoBehaviour
     /// </summary>
     Move moveMethod;
 
+    public Grid grid;
+
+    private void MoveInDirection(Grid.Direction direction)
+    {
+        Vector3 posPlayer = transform.position;
+        Container neighboringContainer = grid.GetNeighbors(posPlayer.x, posPlayer.y)[(int)direction];
+        
+        if(neighboringContainer != null) //Check that its not void
+        {
+            if(neighboringContainer.IsEmpty()) //Check that container is empty
+            {
+                MovePlayer(direction);
+            } else //If container holds something:
+            {
+                if(neighboringContainer.blockHeld.isPushable) //Check if its pushable
+                {
+                    //TODO: Maybe recursive?
+                    do
+                    {
+                        neighboringContainer = neighboringContainer.GetNeighbor(direction);
+                    } while (!(neighboringContainer?.IsEmpty()??true));
+
+                    if (neighboringContainer != null)
+                    {
+                        MovePlayer(direction);
+                    }
+                } 
+            }
+        }
+    }
+
+    public void MovePlayer(Grid.Direction direction)
+    {
+        switch (direction)
+        {
+            case Grid.Direction.UP:
+                transform.Translate(Vector3.up);
+                break;
+
+            case Grid.Direction.RIGHT:
+                transform.Translate(Vector3.right);
+                break;
+
+            case Grid.Direction.DOWN:
+                transform.Translate(Vector3.down);
+                break;
+
+            case Grid.Direction.LEFT:
+                transform.Translate(Vector3.left);
+                break;
+        }
+    }
+
     private void Start() {
-        if (hopMove)
-            moveMethod = HopMove;
-        else
-            moveMethod = MovePlayer;
+        //if (hopMove)
+        //    moveMethod = HopMove;
+        //else
+        //    moveMethod = MovePlayer;
     }
 
     private void Update()
     {
         if (playerMovement == null)
         {
-            if (Input.GetKey(KeyCode.W))        //In general not a good idea to use Input.GetKey; use Input.GetButton instead
-                playerMovement = StartCoroutine(moveMethod(Vector3.up));
-            else if (Input.GetKey(KeyCode.S))
-                playerMovement = StartCoroutine(moveMethod(Vector3.down));
-            else if (Input.GetKey(KeyCode.D))
-                playerMovement = StartCoroutine(moveMethod(Vector3.right));
-            else if (Input.GetKey(KeyCode.A))
-                playerMovement = StartCoroutine(moveMethod(Vector3.left));
+            if (Input.GetKeyDown(KeyCode.W))        //In general not a good idea to use Input.GetKey; use Input.GetButton instead
+                //playerMovement = StartCoroutine(moveMethod(Vector3.up));
+                MoveInDirection(Grid.Direction.UP);
+            else if (Input.GetKeyDown(KeyCode.S))
+                //playerMovement = StartCoroutine(moveMethod(Vector3.down));
+                MoveInDirection(Grid.Direction.DOWN);
+            else if (Input.GetKeyDown(KeyCode.D))
+                //playerMovement = StartCoroutine(moveMethod(Vector3.right));
+                MoveInDirection(Grid.Direction.RIGHT);
+            else if (Input.GetKeyDown(KeyCode.A))
+                //playerMovement = StartCoroutine(moveMethod(Vector3.left));
+                MoveInDirection(Grid.Direction.LEFT);
         }
     }
 
@@ -68,23 +125,23 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <param name="direction">Direction in which the player is moving</param>
     /// <returns><see cref="IEnumerator"/></returns>
-    private IEnumerator MovePlayer(Vector3 direction)
-    {
-        Vector2 startPosition = transform.position;
-        Vector2 destinationPosition = transform.position + direction;
-        float t = 0.0f;
+    //private IEnumerator MovePlayer(Vector3 direction)
+    //{
+    //    Vector2 startPosition = transform.position;
+    //    Vector2 destinationPosition = transform.position + direction;
+    //    float t = 0.0f;
 
-        while (t < 1.0f)
-        {
-            transform.position = Vector2.Lerp(startPosition, destinationPosition, t);
-            t += Time.deltaTime / stepDuration;
-            yield return new WaitForEndOfFrame();
-        }
+    //    while (t < 1.0f)
+    //    {
+    //        transform.position = Vector2.Lerp(startPosition, destinationPosition, t);
+    //        t += Time.deltaTime / stepDuration;
+    //        yield return new WaitForEndOfFrame();
+    //    }
 
-        transform.position = destinationPosition;
+    //    transform.position = destinationPosition;
 
-        playerMovement = null;
-    }
+    //    playerMovement = null;
+    //}
 
     /// <summary>
     /// Moves the player by teleporting to the next block and delaying 
