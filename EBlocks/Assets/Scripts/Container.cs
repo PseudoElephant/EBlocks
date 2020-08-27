@@ -56,9 +56,11 @@ public class Container : MonoBehaviour
         // TODO: Chain Items
         Container container = GetNeighbor(direction);
 
-        if (container?.IsEmpty() ?? true)
+        if (container?.IsEmpty() ?? false)
         {
             container.AddBlockHeld(blockHeld);
+            blockHeld = null;
+            Debug.Log(blockHeld);
             return true;
         }
         return false;
@@ -85,6 +87,7 @@ public class Container : MonoBehaviour
        if (IsEmpty())
         {
             blockHeld = block;
+            Debug.Log(blockHeld);
         }
     }    
     
