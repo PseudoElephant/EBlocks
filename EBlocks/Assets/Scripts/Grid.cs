@@ -54,12 +54,17 @@ public class Grid : MonoBehaviour
         DOWN = 2,
         LEFT = 3
     }
-    
+
+    private void Awake()
+    {
+        gridHeight = 3;
+        gridWidth = 7;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        gridHeight = 5;
-        gridWidth = 5;
+
         InitializeVisualGuidesToGrid();
         InitializeContainersToGrid();
         
@@ -317,5 +322,10 @@ public class Grid : MonoBehaviour
         }
 
         return containerArr[i, j];
+    }
+
+    public Vector2 GetGridSize()
+    {
+        return new Vector2(gridWidth,gridHeight);
     }
 }
