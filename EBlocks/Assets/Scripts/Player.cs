@@ -41,8 +41,20 @@ public class Player : MonoBehaviour
     /// </summary>
     Move moveMethod;
 
+    /// <summary>
+    /// Grid reference
+    /// </summary>
     public Grid grid;
 
+    /// <summary>
+    /// Max pushable blocks player can push at once
+    /// </summary>
+    public int maxPush;
+
+    /// <summary>
+    /// Checks if player can move and moves him, also pushes blocks
+    /// </summary>
+    /// <param name="direction">Direction to move to</param>
     private void MoveInDirection(Grid.Direction direction)
     {
         Vector3 posPlayer = transform.position;
@@ -72,12 +84,12 @@ public class Player : MonoBehaviour
     /// <param name="container">Current container</param>
     /// <param name="direction">Direction in which to check</param>
     /// <returns></returns>
-    private bool RecursiveCheck(Container container, Grid.Direction direction)
+    private bool RecursiveCheck(Container container, Grid.Direction direction, int currentDepth = 0)
     {
         bool canMove = false;
 
         //Base Cases
-        if (container == null)
+        if (container == null || currentDepth > maxPush)
         {
             return false;
         }
@@ -91,7 +103,7 @@ public class Player : MonoBehaviour
         }
 
         //Rest of code
-        canMove = RecursiveCheck(container.GetNeighbor(direction), direction);
+        canMove = RecursiveCheck(container.GetNeighbor(direction), direction, currentDepth+1);
         
         if(canMove)
         {

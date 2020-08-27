@@ -102,7 +102,7 @@ public class Container : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the neighbor Containers 
+    /// Gets the neighbor Container in given direction 
     /// </summary>
     /// <param name="direction"> Direction which the neighbor container should be fetched.</param>
     /// <returns><see cref="Container"/></returns>
