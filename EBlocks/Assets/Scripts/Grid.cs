@@ -57,7 +57,7 @@ public class Grid : MonoBehaviour
 
     private void Awake()
     {
-        gridHeight = 3;
+        gridHeight = 5;
         gridWidth = 7;
     }
 

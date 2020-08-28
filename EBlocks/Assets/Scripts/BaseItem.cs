@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class BaseItem : MonoBehaviour
 {
 
-/// <summary>
-/// Name of the Item
-/// </summary>
+    /// <summary>
+    /// Name of the Item
+    /// </summary>
     public string itemName;
 
     /// <summary>
@@ -21,36 +21,12 @@ public class BaseItem : MonoBehaviour
     /// </summary>
     public Image iconItem;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     /// <summary>
-    /// Destroys current item and creates a block with the prefab.
+    /// Returns the equivalent baseblock of the item
     /// </summary>
-    /// <returns><see cref="bool"/></returns>
-    public bool ConvertToBaseBlock()
+    /// <returns><see cref="GameObject"/>Prefab of equivalent Base Block</returns>
+    public GameObject EquivalentBaseBlock()
     {
-        throw new System.NotImplementedException();
-    }
-
-
-    /// <summary>
-    /// Creates a block with the current prefab, (it does not delete current item instance)
-    /// </summary>
-    /// <returns><see cref="bool"/></returns>
-    public bool CreateBlock()
-    {
-        throw new System.NotImplementedException();
+        return prefabBaseBlock;
     }
 }

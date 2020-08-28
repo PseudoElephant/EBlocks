@@ -28,41 +28,81 @@ public class Inventory : MonoBehaviour
 
     #region Methods
     /// <summary>
-    /// Will place the specified item at the position specified
-    /// </summary>
-    /// <param name="x">x position</param>
-    /// <param name="y">y position</param>
-    public void PlaceItemAtMouse(float x, float y)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    /// <summary>
-    /// Will add specified item to the inventory
+    /// Returns true if succesfully added; Otherwise false.
     /// </summary>
     /// <param name="item">Item to add</param>
-    public void AddItemToInventory(BaseItem item)
+    public bool AddItemToInventory(BaseItem item)
     {
-        throw new System.NotImplementedException();
+        return AddItemsToInventory(item, 1);
     }
 
     /// <summary>
-    /// Adds specified number of items to the inventory
+    /// Adds given items to inventory. Returns true if succesfully added; Otherwise false.
     /// </summary>
+    /// <param name="item">Item to add</param>
+    /// <param name="quantity">Amount of items to add</param>
+    /// <returns>Returns true if succesfully added; Otherwise false. </returns>
+    public bool AddItemsToInventory(BaseItem item, int quantity)
+    {
+        int firstEmpty = -1;
+
+        for (int i = 0; i < SIZE; i++)
+        {
+            if (slots[i].IsEmpty() && firstEmpty == -1)
+            {
+                firstEmpty = i;
+            }
+
+            if (slots[i]?.Peek().itemName == item.itemName)
+            {
+                slots[i].Push(item,quantity);
+                return true;
+            }
+        }
+
+        if (firstEmpty != -1)
+        {
+            slots[firstEmpty].Push(item,quantity);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool AddItemToInventorySlot(int inventorySlot, BaseItem item)
+    {
+        return AddItemsToInventorySlot(inventorySlot, item, 1);
+    }
+
+    /// <summary>
+    /// Adds specified items to given slot. 
+    /// </summary>
+    /// <param name="inventorySlot"></param>
     /// <param name="item"></param>
     /// <param name="quantity"></param>
-    public void AddItemsToInventory(BaseItem item, int quantity)
+    /// <returns>Returns true if succesfully added, otherwise false</returns>
+    public bool AddItemsToInventorySlot(int inventorySlot, BaseItem item, int quantity)
     {
-        throw new System.NotImplementedException();
+        inventorySlot = Mathf.Clamp(inventorySlot, 0, SIZE - 1);
+
+        if (slots[inventorySlot]?.Peek().itemName == item.itemName || slots[inventorySlot].IsEmpty())
+        {
+            slots[inventorySlot].Push(item, quantity);
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
     /// Removes item from inventory in the given slot
     /// </summary>
     /// <param name="inventorySlot"></param>
-    public void RemoveItemFromInventoryInSlot(int inventorySlot)
+    public void RemoveItemFromInventorySlot(int inventorySlot)
     {
-        throw new System.NotImplementedException();
+        inventorySlot = Mathf.Clamp(inventorySlot, 0, SIZE - 1);
+
+        slots[inventorySlot].Pop();
     }
 
     /// <summary>
@@ -70,18 +110,19 @@ public class Inventory : MonoBehaviour
     /// </summary>
     /// <param name="inventorySlot">Inventory slot</param>
     /// <param name="quantity">Number of items to remove</param>
-    public void RemoveItemsFromInventoryInSlot(int inventorySlot, int quantity)
+    public void RemoveItemsFromInventorySlot(int inventorySlot, int quantity)
     {
-        throw new System.NotImplementedException();
-    }
+        inventorySlot = Mathf.Clamp(inventorySlot, 0, SIZE - 1);
 
+        slots[inventorySlot].Pop(quantity);
+    }
 
     /// <summary>
     /// Removes item from the currently selected slot
     /// </summary>
     public void RemoveItemFromInventory()
     {
-        throw new System.NotImplementedException();
+        slots[currentlySelected].Pop();
     }
 
     /// <summary>
@@ -90,16 +131,36 @@ public class Inventory : MonoBehaviour
     /// <param name="quantity">Number of items to remove</param>
     public void RemoveItemsFromInventory(int quantity)
     {
-        throw new System.NotImplementedException();
+        slots[currentlySelected].Pop(quantity);
     }
 
     /// <summary>
-    /// Returns if the inventory slots are full
+    /// Returns if the inventory is full
     /// </summary>
     /// <returns></returns>
     public bool IsFull()
     {
-        throw new System.NotImplementedException();
+        foreach(PEStack<BaseItem> slot in slots)
+        {
+            if (slot.IsEmpty())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Returns if true if given slot is empty; Otherwise false.
+    /// </summary>
+    /// <param name="slot">Slot to check</param>
+    /// <returns>Returns <see cref="bool"/></returns>
+    public bool IsSlotEmpty(int inventorySlot)
+    {
+        inventorySlot = Mathf.Clamp(inventorySlot, 0, SIZE - 1);
+
+        return slots[inventorySlot].IsEmpty();
     }
 
     /// <summary>
@@ -109,7 +170,9 @@ public class Inventory : MonoBehaviour
     /// <returns></returns>
     public int NumberOfItemsInSlot(int inventorySlot)
     {
-        throw new System.NotImplementedException();
+        inventorySlot = Mathf.Clamp(inventorySlot, 0, SIZE - 1);
+
+        return slots[inventorySlot].Size();
     }
     #endregion
 }
