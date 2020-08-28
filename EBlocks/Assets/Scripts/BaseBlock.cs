@@ -82,7 +82,6 @@ public class BaseBlock : MonoBehaviour
             currentContainer = currentContainer.GetNeighbor(direction);
 
         }
-        Debug.Log("Push!");
     }
 
     /// <summary>

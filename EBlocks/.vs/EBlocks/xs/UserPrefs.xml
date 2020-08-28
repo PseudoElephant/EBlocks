@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{68EFAA05-9DCC-1242-A610-333768FB5A63}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/Inventory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerCreative.cs">
     <Files>
-      <File FileName="Assets/Scripts/BaseItem.cs" Line="12" Column="7" />
-      <File FileName="Assets/Scripts/Inventory/Inventory.cs" Line="84" Column="88" />
-      <File FileName="Assets/Scripts/PlayerCreative.cs" Line="28" Column="2" />
-      <File FileName="Assets/Scripts/PEStack.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/PlayerCreative.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Inventory.cs" Line="16" Column="39" />
+      <File FileName="Assets/Scripts/Grid.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,9 +11,8 @@
           <Node name="EBlocks" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="Inventory.cs" selected="True" />
-                </Node>
+                <Node name="Inventory" expanded="True" />
+                <Node name="PlayerCreative.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -24,7 +22,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="dee89650-c9df-4eb4-b2d7-79043e206000" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="470ab226-6869-443f-9f68-61c016de2ffe" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

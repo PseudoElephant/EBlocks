@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 189180475}
+    - target: {fileID: 8706591488501846290, guid: 2d63f3bfe5e29475092b1812fb35a447, type: 3}
+      propertyPath: maxPush
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8706591488501846291, guid: 2d63f3bfe5e29475092b1812fb35a447, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5

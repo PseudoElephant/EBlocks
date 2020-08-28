@@ -60,7 +60,6 @@ public class Container : MonoBehaviour
         {
             container.AddBlockHeld(blockHeld);
             blockHeld = null;
-            Debug.Log(blockHeld);
             return true;
         }
         return false;
@@ -87,7 +86,6 @@ public class Container : MonoBehaviour
        if (IsEmpty())
         {
             blockHeld = block;
-            Debug.Log(blockHeld);
         }
     }    
     
